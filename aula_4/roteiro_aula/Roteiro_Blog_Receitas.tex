@@ -1,0 +1,409 @@
+\documentclass[12pt,a4paper]{article}
+
+\input{/home/thales/documents/profia/meus_materiais/configuracao_latek/config_profia_1.tex}
+
+\begin{document}
+
+\cabecalhoRoteiro
+    {/home/thales/documents/profia/imagens/Logo Profia.png} % Logo 1
+    {/home/thales/documents/profia/imagens/Logo Horizontal Sem Fundo.png} % Logo 2
+    {Profia - Escola de Programação e Tecnologia}
+    {Orientação a Objetos}
+    {Introdução ao desenvolvimento Web}
+    {Miniprojeto - Blog de Receitas}
+
+\noindent\textbf{Objetivo:} Construir um site de receitas completo integrando HTML Semântico, Box Model e Flexbox passo a passo.
+
+\vspace{0.5cm}
+
+\section*{Parte 1: Estruturando com o HTML Semântico}
+Nesta primeira etapa, vamos criar o esqueleto da nossa página bloco a bloco. Focaremos apenas no significado do conteúdo, a beleza vem depois!
+
+% Passo 1
+\vspace{0.25cm}
+\noindent\textbf{Passo 1: Estrutura Básica}\\
+Crie o seu arquivo HTML e defina a base da página. Lembre-se de configurar o idioma para Português, definir o título da aba e fazer a ligação com o CSS.
+
+\begin{codehtml}
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Site de Receitas</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <!-- Todo o nosso site ficará aqui dentro -->
+    </body>
+</html>
+\end{codehtml}
+
+% Passo 2
+\noindent\textbf{Passo 2: Cabeçalho da Página (Header)}\\
+Dentro do \verb|<body>|, crie o topo do site com o título principal e uma área de navegação contendo os links.
+
+\begin{codehtml}
+        <header>
+            <h1>Site de Receitas</h1>
+            <nav>
+                <ul>
+                    <li><a href="\">INÍCIO</a></li>
+                    <li><a href="\">DOCES</a></li>
+                    <li><a href="\">SALGADOS</a></li>
+                </ul>
+            </nav>
+        </header>
+\end{codehtml}
+
+% Passo 3
+\noindent\textbf{Passo 3: Iniciando a Receita e a Imagem}\\
+Abaixo do cabeçalho, abra o contêiner principal (\verb|<main>|) e o artigo da receita. Adicione o título do prato e a imagem em destaque.
+
+\begin{codehtml}
+        <main>
+            <article>
+                <section>
+                    <h2>Pudim de leite</h2>
+                    <figure>
+                        <img src="imagens/pudim.jpg" alt="Imagem de um lindo pudim">
+                        <figcaption>A sobremesa mais amada do brasil</figcaption>
+                    </figure>
+
+                <!- Restante do código aqui... -->
+                </section>
+            </article>
+        </main>
+\end{codehtml}
+
+% Passo 4
+\noindent\textbf{Passo 4: Descrição e Ingredientes (Listas com Marcadores)}\\
+Ainda dentro da mesma seção, adicione o texto descritivo. Em seguida, use listas não ordenadas (\verb|<ul>|) para os ingredientes, pois a ordem em que os separamos não altera a receita.
+
+\begin{codehtml}
+                    <p>Esta é a melhor e mais fácil receita que você vai encontrar. O segredo é misturar muito bem mas com calma (para não deixar muito ar entrar na receita).</p>
+
+                    <h3>Ingredientes da Massa:</h3>
+                    <ul>
+                        <li>1 lata de leite condensado</li>
+                        <li>1 lata de leite (mesma medida)</li>
+                        <li>3 ovos inteiros</li>
+                    </ul>
+
+                    <h3>Ingredientes da Calda:</h3>
+                    <ul>
+                        <li>1 xícara (chá) de açúcar</li>
+                        <li>1/2 xícara de água</li>
+                    </ul>
+\end{codehtml}
+
+% Passo 5
+\noindent\textbf{Passo 5: Modo de Preparo (Listas Numeradas)}\\
+Para o preparo, a ordem dos passos é fundamental! Por isso, usaremos listas ordenadas (\verb|<ol>|). Feche a \verb|<section>| ao final.
+
+\begin{codehtml}
+                    <h3>Modo de Preparo:</h3>
+
+                    <h4>Calda:</h4>
+                    <ol>
+                        <li>Derreta o açúcar na panela até ficar moreno, acrescente a água e deixe engrossar.</li>
+                        <li>Coloque em uma forma redonda e reserve.</li>
+                    </ol>
+
+                    <h4>Massa:</h4>
+                    <ol>
+                        <li>Primeiro, bata bem os ovos no liquidificador.</li>
+                        <li>Acrescente o leite condensado e o leite, e bata novamente.</li>
+                        <li>Despeje a massa do pudim na forma, por cima da calda.</li>
+                        <li>Asse em forno médio por 45 minutos (em banho-maria).</li>
+                        <li>Espete um garfo para ver se está bem assado.</li>
+                        <li>Deixe esfriar e desenforme.</li>
+                    </ol>
+                </section>
+\end{codehtml}
+
+% Passo 6
+\noindent\textbf{Passo 6: O Formulário de Comentários}\\
+Inicie uma nova seção para os leitores interagirem. Crie um formulário com os campos de Nome, E-mail, uma caixa de texto grande (\verb|<textarea>|) e o botão de enviar.
+
+\begin{codehtml}
+                <section class="comentarios">
+                    <form>
+                        <h4>Deixe seu comentário: </h4>
+                        <label for="nome-formulario">Nome:</label>
+                        <input type="text" id="nome-formulario">
+
+                        <label for="email-formulario">E-mail:</label>
+                        <input type="email" id="email-formulario">
+
+                        <label for="comentario-formulario">Comentário:</label>
+                        <textarea
+                            id="comentario-formulario"
+                            placeholder="O que você achou da receita?"
+                            rows="4"
+                            cols="40"
+                            minlength="1"
+                            wrap="soft"
+                            required>
+                            Digite aqui seu comentário!
+                        </textarea>
+
+                        <button>Enviar Comentário</button>
+                    </form>
+\end{codehtml}
+
+% Passo 7
+\noindent\textbf{Passo 7: Exibindo um Comentário}\\
+Logo abaixo do formulário, crie um bloco (\verb|<div>|) simulando um comentário que já foi publicado no site. Feche a seção e o artigo.
+
+\begin{codehtml}
+                    <h3>Comentários dos leitores:</h3>
+                    <div class="comentario-leitor">
+                        <p><strong>Maria:</strong> Fiz ontem e ficou maravilhoso!</p>
+                    </div>
+                </section>
+            </article>
+\end{codehtml}
+
+% Passo 8
+\noindent\textbf{Passo 8: Barra Lateral (Aside)}\\
+Fora do artigo (mas dentro do \verb|<main>|), adicione uma barra lateral recomendando outros pratos aos visitantes.
+
+\begin{codehtml}
+            <aside>
+                <h2>Veja Também</h2>
+                <ul>
+                    <li><a href="">Bolo de cenoura com chocolate</a></li>
+                    <li><a href="">Torta de frango cremosa</a></li>
+                    <li><a href="">Pão de queijo de frigideira</a></li>
+                </ul>
+            </aside>
+        </main>
+\end{codehtml}
+
+% Passo 9
+\noindent\textbf{Passo 9: Rodapé (Footer)}\\
+Para finalizar o HTML, insira o rodapé da página com os direitos autorais.
+
+\begin{codehtml}
+        <footer>
+            <p>&copy; Blog Site de Receitas. Todos os direito reservados - 2026</p>
+        </footer>
+\end{codehtml}
+
+\newpage
+
+\section*{Parte 2: A Mágica do CSS e Flexbox}
+Agora que a estrutura está sólida, vamos usar o arquivo \verb|style.css| para organizar o layout e pintar o nosso site.
+
+% CSS Passo 1
+\vspace{0.25cm}
+\noindent\textbf{Passo 1: Reset e Configuração Global}\\
+Zere as margens universais e defina a fonte e a cor de fundo padrão para todo o site.
+
+\begin{codecss}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f4f4f9;
+    color: #333333;
+}
+\end{codecss}
+
+% CSS Passo 2
+\noindent\textbf{Passo 2: O Cabeçalho (Header)}\\
+Pinte o fundo do cabeçalho de uma cor vibrante, centralize o título e dê um espaçamento interno (\verb|padding|).
+
+\begin{codecss}
+header {
+    background-color: #ff6b6b;
+    color: white;
+    text-align: center;
+    padding: 10px 15px;
+}
+
+header h1 {
+    color:#333
+}
+\end{codecss}
+
+% CSS Passo 3
+\noindent\textbf{Passo 3: O Menu (Flexbox)}\\
+Use o Flexbox na lista (\verb|<ul>|) do menu para colocar os itens um ao lado do outro, centralizados. Remova as bolinhas da lista e os sublinhados dos links.
+
+\begin{codecss}
+nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    margin-top: 15px;
+}
+
+nav li {
+    margin: 0 15px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+\end{codecss}
+
+% CSS Passo 4
+\noindent\textbf{Passo 4: O Layout Principal (Duas Colunas)}\\
+Vamos criar as colunas do site! Transforme o \verb|<main>| em um contêiner Flex, fazendo o \verb|<article>| ocupar mais espaço (\verb|flex: 3|) e a barra lateral \verb|<aside>| ser mais estreita (\verb|flex: 1|).
+
+\begin{codecss}
+main {
+    display: flex;
+    max-width: 1000px;
+    margin: 30px auto; /* Centraliza o site na tela */
+    gap: 20px;         /* Espaço entre as colunas */
+    padding: 0 20px;
+}
+
+article {
+    flex: 3;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px
+}
+
+aside {
+    flex: 1;
+    background-color: #fff0f0;
+    padding: 20px;
+    border-radius: 8px;
+}
+\end{codecss}
+
+% CSS Passo 5
+\noindent\textbf{Passo 5: A Imagem da Receita}\\
+Garanta que a imagem nunca ultrapasse o tamanho da tela, forçando-a a ter 100\% da largura disponível na coluna. Arredonde as bordas.
+
+\begin{codecss}
+figure img {
+    width: 100%;
+    border-radius: 8px;
+    margin-top: 15px;
+}
+
+figcaption {
+    text-align: center;
+    font-style: italic;
+    color: #777;
+    margin-bottom: 20px;
+}
+\end{codecss}
+
+% CSS Passo 6
+\noindent\textbf{Passo 6: Tipografia (Títulos, Textos e Listas)}\\
+Adicione respiros (margens) nos subtítulos para que não fiquem colados no texto. Aumente o espaço entre as linhas (\verb|line-height|) para melhorar a leitura.
+
+\begin{codecss}
+article h3 {
+    margin-top: 25px;
+    margin-bottom: 15px;
+}
+
+article h4 {
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+
+p, ul, ol {
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+article li {
+    margin-left: 30px;
+}
+
+aside ul {
+    list-style-type: square;
+    margin-left: 20px;
+    margin-top: 15px;
+}
+
+aside a {
+    color: #ff6b6b;
+    text-decoration: none;
+}
+\end{codecss}
+
+% CSS Passo 7
+\noindent\textbf{Passo 7: O Formulário}\\
+Use Flexbox novamente no \verb|<form>|, mas agora com a direção de \textbf{coluna}, para que os campos caiam um abaixo do outro automaticamente.
+
+\begin{codecss}
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+input, textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: inherit;
+    resize: none; /* Impede o usuário de redimensionar a caixa */
+}
+\end{codecss}
+
+% CSS Passo 8
+\noindent\textbf{Passo 8: O Botão e a Área de Comentários}\\
+Destaque o botão com uma cor forte e mude o cursor quando o mouse passar por cima (\verb|hover|). Dê uma cor de fundo sutil para a caixa de comentários postados.
+
+\begin{codecss}
+button {
+    background-color: #ff6b6b;
+    color: white;
+    border: none;
+    padding: 12px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover{
+    background-color: #e55a5a;
+}
+
+.comentarios{
+    margin-top: 40px;
+    border-top: 2px solid #eee;
+    padding-top: 20px;
+}
+
+.comentario-leitor {
+    background-color: #fae7e7;
+    padding: 15px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+\end{codecss}
+
+% CSS Passo 9
+\noindent\textbf{Passo 9: O Rodapé}\\
+Para fechar com estilo, dê um fundo escuro ao rodapé e centralize o texto.
+
+\begin{codecss}
+footer {
+    text-align: center;
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    margin-top: 40px;
+}
+\end{codecss}
+
+\end{document}

@@ -1,0 +1,163 @@
+/* PARTE 2: ESTILIZANDO A PÁGINA COM CSS E FLEXBOX */
+
+/* Passo 1: O reset universal e o bordex-box */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Passo 2: Fonte e Estética visual do site */
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f4f4f9;
+    color: #333333;
+}
+
+/* Passo 3: Estilizando o cabeçalho */
+header {
+    background-color: #ff6b6b;
+    color: white;
+    text-align: center; /* Tira as bolinhas da lista */
+    padding: 10px 15px;
+}
+
+header h1 {
+    color:#333
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    margin-top: 15px;
+}
+
+nav li{
+    margin: 0 15px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none; /* Tira o sublinhado */
+    font-weight: bold;
+}
+
+/* Passo 4: O Layout de Colunas */
+main{
+    display: flex;
+    max-width: 1000px;
+    margin: 30px auto; /* Centraliza o site na tela */
+    gap: 20px; /* Espaço entre as colunas */
+    padding: 0 20px;
+}
+
+article {
+    flex: 3;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px
+}
+
+article li {
+    margin-left: 30px;
+}
+
+aside {
+    flex: 1;
+    background-color: #fff0f0;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+/* Passo 5: Deixando o artigo principal mais agradável */
+article h3 {
+    margin-top: 25px;
+    margin-bottom: 15px;
+}
+
+article h4 {
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+
+figure img {
+    width: 100%; /* A imagem ocupa toda a largura do article */
+    border-radius: 8px;
+    margin-top: 15px;
+}
+
+figcaption {
+    text-align: center;
+    font-style: italic;
+    color: #777;
+    margin-bottom: 20px;
+}
+
+p, ul, ol {
+    margin-bottom: 15px;
+    line-height: 1.6; /* Aumenta o espaço entre as linhas do texto */
+}
+
+aside ul {
+    list-style-type: square;
+    margin-left: 20px;
+    margin-top: 15px;
+}
+
+aside a {
+    color: #ff6b6b;
+    text-decoration: none;
+}
+
+/* Passo 6: Estilizando o formulário */
+.comentarios{
+    margin-top: 40px;
+    border-top: 2px solid #eee;
+    padding-top: 20px;
+}
+
+.comentario-leitor {
+    background-color: #fae7e7;
+    padding: 15px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+input, textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: inherit;
+    resize: none;
+}
+
+button {
+    background-color: #ff6b6b;
+    color: white;
+    border: none;
+    padding: 12px;
+    font-weight: bold;
+    cursor: pointer; /* Muda o cursor para a "mãozinha"*/
+}
+
+button:hover{
+    background-color: #e55a5a; /* Escurece um pouco ao passar o mouse */
+}
+
+/* Passo 7: Estilizando o rodapé */
+footer {
+    text-align: center;
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    margin-top: 40px;
+}
