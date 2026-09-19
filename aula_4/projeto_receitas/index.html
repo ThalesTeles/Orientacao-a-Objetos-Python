@@ -1,0 +1,117 @@
+<!-- PARTE 1: ESTRUTURANDO COM O HTML SEMÂNTICO -->
+
+<!-- Passo 1: Criar a estrutura básica do html (head, body e título)-->
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Aike Fome</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+
+    <body>
+        <!-- Passo 2: Criar o cabeçalho da página -->
+        <header>
+            <h1>Aike Fome</h1>
+            <nav>
+                <ul>
+                    <li><a href="\">INÍCIO</a></li>
+                    <li><a href="\">DOCES</a></li>
+                    <li><a href="\">SALGADOS</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <!-- Passo 3: Crie a seção principal onde guardaremos a receita e a barra lateral-->
+        <main>
+            <article>
+                <section id="secao-receita">
+                    <h2>Pudim de leite</h2>
+                    <figure>
+                        <img src="imagens/pudim.jpg" alt="Imagem de um lindo pudim">
+                        <figcaption>A sobremesa mais amada do brasil</figcaption>
+                    </figure>
+
+                    <p>Esta é a melhor e mais fácil receita que você vai encontrar. O segredo é misturar muito bem mas com calma (para não deixar muito ar entrar na receita).</p>
+
+                    <h3>Ingredientes da Massa:</h3>
+                    <ul>
+                        <li>1 lata de leite condensado</li>
+                        <li>1 lata de leite (mesma medida da lata de leite condensado)</li>
+                        <li>3 ovos inteiros</li>
+                    </ul>
+
+                    <h3>Ingredientes da Calda:</h3>
+                    <ul>
+                        <li>1 xícara (chá) de açúcar</li>
+                        <li>1/2 xícara de água</li>
+                    </ul>
+
+                    <h3>Modo de Preparo:</h3>
+
+                    <h4>Calda:</h4>
+                    <ol>
+                        <li>Derreta o açúcar na panela até ficar moreno, acrescente a água e deixe engrossar.</li>
+                        <li>Coloque em uma forma redonda e reserve.</li>
+                    </ol>
+
+                    <h4>Massa:</h4>
+                    <ol>
+                        <li>Primeiro, bata bem os ovos no liquidificador.</li>
+                        <li>Acrescente o leite condensado e o leite, e bata novamente.</li>
+                        <li>Despeje a massa do pudim na forma, por cima da calda.</li>
+                        <li>Asse em forno médio por 45 minutos, com a assadeira redonda dentro de uma maior com água (banho-maria).</li>
+                        <li>Espete um garfo para ver se está bem assado.</li>
+                        <li>Deixe esfriar e desenforme.</li>
+                    </ol>
+                </section>
+
+                <!-- Passo 4: Crie a seção de comentário com o formulário-->
+                <section class="comentarios">
+                    <form>
+                        <h4>Deixe seu comentário: </h4>
+                        <label for="nome-formulario">Nome:</label>
+                        <input type="text" id="nome-formulario">
+
+                        <label for="email-formulario">E-mail:</label>
+                        <input type="email" id="email-formulario">
+
+                        <label for="comentario-formulario">Comentário:</label>
+                        <!-- Será que tem alguma forma de impedir o usuário de redimensionar a área de comentário:-->
+                        <textarea
+                            id="comentario-formulario"
+                            placeholder="O que você achou da receita?"
+                            rows="4"
+                            cols="40"
+                            minlength="1"
+                            wrap="soft"
+                            required>Digite aqui seu comentário!</textarea>
+
+                        <button>Enviar Comentário</button>
+                    </form>
+                    <h3>Comentários dos leitores:</h3>
+                    <div class="comentario-leitor">
+                        <p><strong>Maria:</strong> Fiz ontem e ficou maravilhoso!</p>
+                    </div>
+
+                </section>
+            </article>
+
+            <!-- Passo 5: Crie a barra lateral -->
+            <aside>
+                
+                <h2>Veja Também</h2>
+                <ul>
+                    <li><a href="">Bolo de cenoura com chocolate</a></li>
+                    <li><a href="">Torta de frango cremosa</a></li>
+                    <li><a href="">Pão de queijo de frigideira</a></li>
+                </ul>
+            </aside>
+        </main>
+            <!-- Passo 6: Crie o rodapé -->
+             <footer>
+                <p>&copy; Blog Aike Fome. Todos os direito reservados - 2026</p>
+             </footer>
+    </body>
+</html>
