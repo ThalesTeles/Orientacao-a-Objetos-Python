@@ -1,12 +1,11 @@
 """
 ==============================================================================
-AULA 5 - ATIVIDADE DE CASA - USANDO CLASSES E CONSTRUTORES PARA
-RESOLVER UM PROBLEMA PRÁTICO
+AULA 5 - ATIVIDADE DE CASA - USANDO CLASSES PARA RESOLVER UM PROBLEMA PRÁTICO
 ==============================================================================
 
-Na aula, criamos classes com construtor (__init__) para representar e
-exibir informações. Agora vamos usar classes e objetos para RESOLVER UM
-PROBLEMA de verdade: organizar o estoque de uma loja.
+Na aula, criamos classes e objetos apenas para representar e exibir
+informações. Agora vamos usar classes e objetos para RESOLVER UM PROBLEMA
+de verdade: organizar o estoque de uma loja.
 
 Complete os espaços marcados com "___" e com o comentário # TODO.
 Ao final, execute o arquivo e confira se as respostas fazem sentido.
@@ -26,28 +25,23 @@ eletrônicos. Cada produto do estoque tem:
   - preco (por unidade)
   - quantidade (quantas unidades existem no estoque)
 
-Sua tarefa é usar CLASSES (com construtor) para representar cada produto
-e, depois, escrever FUNÇÕES (fora da classe) que analisem a lista de
-produtos e respondam a perguntas do dono da loja.
+Sua tarefa é usar CLASSES para representar cada produto e, depois, escrever
+FUNÇÕES (fora da classe) que analisem a lista de produtos e respondam a
+perguntas do dono da loja.
 
-Lembre-se: ainda não vimos "métodos" dentro de classes (além do próprio
-construtor), então as funções que vamos usar aqui recebem os objetos
-como parâmetro, do mesmo jeito que fizemos com a função
-"atacar_estruturado" na aula.
+Lembre-se: ainda não vimos "métodos" dentro de classes, então as funções
+que vamos usar aqui recebem os objetos como parâmetro, do mesmo jeito que
+fizemos com a função "atacar_estruturado" na aula.
 """
 
 # ==============================================================================
-# PARTE 1 - CRIANDO A CLASSE COM CONSTRUTOR
+# PARTE 1 - CRIANDO A CLASSE
 # ==============================================================================
 """
-Crie uma classe chamada "Produto" com um construtor (__init__) que
-recebe e define os atributos:
-  - nome
-  - preco
-  - quantidade
+Crie uma classe chamada "Produto", vazia (com pass).
 """
 
-# TODO: crie a classe Produto aqui, com __init__(self, nome, preco, quantidade)
+# TODO: crie a classe Produto aqui
 
 
 # ==============================================================================
@@ -56,7 +50,7 @@ recebe e define os atributos:
 """
 Crie 5 objetos da classe Produto, representando produtos de uma loja de
 eletrônicos (ex: "Fone de Ouvido", "Mouse", "Teclado", "Carregador",
-"Caixa de Som"). Para cada um, passe os valores direto no construtor:
+"Caixa de Som"). Para cada um, defina os atributos:
   - nome
   - preco       (número, ex: 49.90)
   - quantidade  (número inteiro, ex: 12)
@@ -64,8 +58,7 @@ eletrônicos (ex: "Fone de Ouvido", "Mouse", "Teclado", "Carregador",
 Depois, coloque todos os 5 objetos dentro de uma lista chamada "estoque".
 """
 
-# TODO: crie os 5 objetos Produto aqui, chamando o construtor, ex:
-# produto1 = Produto(___, ___, ___)
+# TODO: crie os 5 objetos Produto aqui
 
 
 # TODO: crie a lista "estoque" com os 5 produtos
@@ -83,12 +76,10 @@ problema real da loja.
 
 # ------------------------------------------------------------------
 # Problema 1: Qual é o valor total (em R$) parado no estoque?
-# Dica: valor total de um produto = preco * quantidade. Some para todos.
 # ------------------------------------------------------------------
 def calcular_valor_total_estoque(lista_produtos):
     total = 0
-    # TODO: percorra a lista_produtos e some (preco * quantidade) de cada
-    # produto na variável "total"
+    # TODO
 
     return total
 
@@ -99,10 +90,7 @@ def calcular_valor_total_estoque(lista_produtos):
 # ------------------------------------------------------------------
 def produtos_para_repor(lista_produtos):
     produtos_baixos = []
-    # TODO: percorra a lista_produtos e, para cada produto com
-    # quantidade menor que 5, adicione o NOME do produto na lista
-    # "produtos_baixos"
-
+    # TODO
     return produtos_baixos
 
 
@@ -111,8 +99,7 @@ def produtos_para_repor(lista_produtos):
 # A função deve devolver o OBJETO do produto mais caro (não só o nome).
 # ------------------------------------------------------------------
 def produto_mais_caro(lista_produtos):
-    # TODO: percorra a lista_produtos e descubra qual objeto tem o
-    # maior valor de "preco". Devolva esse objeto.
+    # TODO
     pass
 
 
@@ -121,9 +108,7 @@ def produto_mais_caro(lista_produtos):
 # preço dele? Se o produto não existir no estoque, devolva None.
 # ------------------------------------------------------------------
 def buscar_preco_por_nome(lista_produtos, nome_buscado):
-    # TODO: percorra a lista_produtos e, se encontrar um produto cujo
-    # atributo "nome" seja igual a "nome_buscado", devolva o "preco"
-    # desse produto. Se não encontrar nenhum, devolva None ao final.
+    # TODO
     pass
 
 
@@ -148,7 +133,7 @@ escreveu na Parte 3.
 
 
 # ==============================================================================
-# DESAFIO EXTRA (opcional)
+# DESAFIO EXTRA
 # ==============================================================================
 """
 A loja quer fazer uma promoção: todos os produtos com quantidade maior
@@ -161,10 +146,9 @@ estoque e, para os produtos com quantidade > 10, ATUALIZA o atributo
 Depois, chame a função e imprima novamente os preços de todos os
 produtos para confirmar que a promoção foi aplicada corretamente.
 
-Dica: como os objetos são "reais" na memória, se você alterar o atributo
+Lembrete: como os objetos são um tipo de referência, se você alterar o atributo
 de um objeto dentro da função, essa alteração permanece mesmo depois
-que a função terminar - mesmo o objeto tendo sido criado com o
-construtor.
+que a função terminar.
 """
 
 # TODO (desafio extra): crie a função aplicar_promocao aqui
@@ -178,10 +162,9 @@ construtor.
 # ==============================================================================
 """
 Se cada produto fosse representado por 3 variáveis soltas (nome1, preco1,
-quantidade1, nome2, preco2, quantidade2...) em vez de objetos criados com
-construtor dentro de uma lista, essas funções seriam mais fáceis ou mais
-difíceis de escrever? E seria mais fácil "esquecer" de definir algum
-dado de um produto? Por quê?
+quantidade1, nome2, preco2, quantidade2...) em vez de objetos dentro de
+uma lista, essas funções seriam mais fáceis ou mais difíceis de escrever?
+Por quê?
 """
 
 # TODO: escreva sua resposta aqui como comentário
