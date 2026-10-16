@@ -1,155 +1,155 @@
 """
 ==============================================================================
-AULA 6 - ATIVIDADE DE SALA - RECONSTRUINDO AS CLASSES COM MÉTODOS
+AULA 6 - ATIVIDADE DE SALA - MÉTODOS, SELF E ESTADO
 ==============================================================================
 
-Na Aula 5 criamos uma classe "Animal" bem simples, com "pass", e
-definimos os atributos manualmente em cada objeto. Hoje vamos
-RECONSTRUIR essa mesma classe usando __init__ e métodos.
+Nesta atividade você vai criar uma conta bancária simples, com depósito,
+saque e Pix.
 
-Complete os espaços marcados com o comentário # TODO.
-Depois de completar cada parte, execute o arquivo para conferir se os
-prints aparecem corretamente.
+Complete os trechos marcados com # TODO e execute o arquivo depois de
+cada parte para ver se está funcionando.
+
+Todos os métodos ficam dentro da classe Conta. Quando a parte pedir um
+método novo, volte na classe e adicione lá.
 ==============================================================================
 """
 
 # ==============================================================================
-# PARTE 1 - CONSTRUTOR DA CLASSE ANIMAL
+# PARTE 1 - A CLASSE CONTA
 # ==============================================================================
 """
-Crie a classe "Animal" com um construtor __init__ que recebe e guarda:
-  - nome
-  - especie
-  - idade
-  - som   (o som que o animal faz, ex: "Au au", "Miau")
+Crie a classe "Conta" com um construtor que recebe:
+  - titular
+  - saldo, com valor padrão 0
+
+Assim, quem abre uma conta sem dinheiro pode escrever só Conta("Ana"),
+e quem já começa com dinheiro escreve Conta("Bruno", 200).
+
+Adicione também o método "mostrar_saldo(self)", que imprime:
+
+  "Saldo de Ana: R$ 0.00"
+
+Crie duas contas, uma de cada jeito, e chame mostrar_saldo() nas duas.
 """
 
-# TODO: crie a classe Animal aqui, com o __init__
+# TODO: crie a classe Conta com __init__ e mostrar_saldo()
 
 
-# ==============================================================================
-# PARTE 2 - MÉTODO "apresentar"
-# ==============================================================================
-"""
-Adicione à classe Animal um método "apresentar(self)" que imprime algo
-como:
-
-  "Rex é um(a) cachorro de 3 anos e faz Au au"
-
-Dica: volte na classe que você criou na Parte 1 e adicione o método
-dentro dela (lembre-se da indentação!).
-"""
-
-# TODO: adicione o método apresentar() na classe Animal
+# TODO: crie as duas contas e mostre o saldo de cada uma
 
 
 # ==============================================================================
-# PARTE 3 - CRIANDO OS OBJETOS COM O CONSTRUTOR
+# PARTE 2 - DEPOSITAR: UM MÉTODO QUE MUDA O ESTADO
 # ==============================================================================
 """
-Agora crie DOIS objetos da classe Animal, "cachorro" e "gato", passando
-os valores diretamente no construtor (nada de atribuir atributo por
-atributo como na Aula 5!). Em seguida, chame apresentar() para cada um.
+Adicione o método "depositar(self, valor)", que soma o valor ao saldo
+da conta e imprime:
+
+  "Depósito de R$ 50.00 na conta de Ana"
+
+Faça dois depósitos na conta da Ana e mostre o saldo no final.
 """
 
-# TODO: crie o objeto "cachorro" usando Animal(...)
-
-
-# TODO: crie o objeto "gato" usando Animal(...)
-
-
-# TODO: chame cachorro.apresentar() e gato.apresentar()
+# TODO: adicione depositar() na classe e teste aqui
 
 
 # ==============================================================================
-# PARTE 4 - MÉTODO QUE MUDA O ESTADO: "fazer_aniversario"
+# PARTE 3 - SACAR: UM MÉTODO QUE DEVOLVE UMA RESPOSTA
 # ==============================================================================
 """
-Adicione à classe Animal um método "fazer_aniversario(self)" que:
-  - soma 1 ao atributo "idade" do animal
-  - imprime algo como "Rex agora tem 4 anos!"
+Adicione o método "sacar(self, valor)":
+  - se o saldo for suficiente, desconta o valor, imprime uma mensagem de
+    saque e devolve True
+  - se não for, imprime "Saldo insuficiente" e devolve False
 
-Depois, chame esse método no objeto "cachorro" e imprima a idade dele
-ANTES e DEPOIS de chamar o método, para confirmar que o ESTADO do
-objeto mudou.
+O return permite que o código de fora saiba se deu certo. Teste assim:
+
+  if conta_ana.sacar(30):
+      print("Pode entregar o lanche")
+  else:
+      print("Compra cancelada")
+
+Teste uma vez com um valor que a conta tem e outra com um valor maior
+que o saldo.
 """
 
-# TODO: adicione o método fazer_aniversario() na classe Animal
-
-
-# TODO: imprima a idade do cachorro antes, chame fazer_aniversario(),
-# e imprima a idade depois
-
-
-# ==============================================================================
-# PARTE 5 - OBJETOS x VARIÁVEIS (CUIDADO COM A PEGADINHA!)
-# ==============================================================================
-"""
-Faça o seguinte teste:
-
-  gato_apelido = gato       # NÃO cria um novo objeto!
-  gato_apelido.nome = "Bichano"
-  print(gato.nome)
-
-Rode e observe o resultado. Depois, como comentário, explique com suas
-palavras por que "gato.nome" mudou mesmo você tendo alterado só
-"gato_apelido.nome".
-"""
-
-# TODO: faça o teste acima e imprima o resultado
-
-
-# TODO: escreva sua explicação aqui como comentário
-
-
-"""
-Agora faça o oposto: crie um objeto REALMENTE novo e independente,
-chamado "gato2", usando o construtor Animal(...) de novo (não copiando
-a variável "gato"). Altere o nome de "gato2" e confirme que "gato.nome"
-NÃO muda dessa vez.
-"""
-
-# TODO: crie o objeto "gato2" com o construtor, altere o nome dele e
-# confirme que "gato" não foi afetado
+# TODO: adicione sacar() na classe e faça os dois testes aqui
 
 
 # ==============================================================================
-# PARTE 6 - MAIS UM ANIMAL E SUA PRÓPRIA CLASSE
+# PARTE 4 - PIX: UM OBJETO MEXENDO EM OUTRO
 # ==============================================================================
 """
-Crie um terceiro objeto Animal, com o animal que você quiser, e chame
-apresentar() e fazer_aniversario() nele.
+Adicione o método "pix(self, destino, valor)". O parâmetro "destino" é
+outra Conta.
 
-Depois, pegue a classe que você criou sozinho(a) na atividade de sala
-da Aula 5 (Carro, Jogador, Celular ou Personagem de RPG) e:
-  1. Adicione um __init__ com os mesmos atributos de antes.
-  2. Adicione PELO MENOS UM método que faça sentido para essa classe
-     (ex: Carro.acelerar(), Jogador.marcar_gol(),
-     Celular.instalar_app(), Personagem.atacar()...).
-  3. Crie dois objetos dessa classe usando o construtor e chame o novo
-     método em cada um.
+Dentro do método, não repita a lógica do saque. Use o que você já fez:
+  1. chame self.sacar(valor)
+  2. se o saque deu certo, chame destino.depositar(valor)
+
+Faça um Pix do Bruno para a Ana e mostre o saldo das duas contas. Depois
+tente um Pix maior do que o saldo do Bruno e confira que nenhum dos dois
+saldos mudou.
 """
 
-# TODO: crie o terceiro objeto Animal e chame apresentar() e fazer_aniversario()
-
-
-# TODO: reconstrua sua própria classe da Aula 5 aqui, com __init__ e
-# pelo menos um método
-
-
-# TODO: crie dois objetos dessa classe e chame o novo método neles
+# TODO: adicione pix() na classe e teste aqui
 
 
 # ==============================================================================
-# REFLEXÃO FINAL (responda em uma frase, como comentário abaixo)
+# PARTE 5 - DUAS VARIÁVEIS, UMA CONTA SÓ
 # ==============================================================================
 """
-Comparando com a forma como criamos objetos na Aula 5 (sem __init__,
-atribuindo atributo por atributo): o que ficou melhor ou mais seguro
-hoje, usando construtor e métodos?
+A mãe da Ana também tem acesso à conta dela pelo aplicativo. Rode:
+
+  conta_no_app_da_mae = conta_ana
+  conta_no_app_da_mae.depositar(100)
+  conta_ana.mostrar_saldo()
+
+Responda em um comentário: por que o saldo da Ana aumentou, se o
+depósito foi feito por conta_no_app_da_mae?
+
+Agora crie uma conta nova com Conta("Ana") e faça um depósito nela.
+Mostre o saldo das duas contas da Ana. Por que dessa vez elas não estão
+ligadas?
 """
 
-# TODO: escreva sua resposta aqui como comentário
+# TODO: faça o teste e escreva suas respostas aqui
+
+
+# ==============================================================================
+# PARTE 6 - EXTRATO
+# ==============================================================================
+"""
+Todo banco guarda as movimentações da conta. Faça assim:
+
+  1. No __init__, crie o atributo "historico" como uma lista vazia.
+     Ele não vem por parâmetro, toda conta começa com o histórico vazio.
+  2. Em depositar() e em sacar() (quando o saque der certo), adicione
+     um texto na lista, como "Depósito: +50.00" ou "Saque: -30.00".
+  3. Crie o método "extrato(self)", que imprime o nome do titular, cada
+     item do histórico e o saldo final.
+
+Chame extrato() na conta da Ana e na do Bruno. O Pix da Parte 4
+aparece no extrato, mesmo você não tendo mexido no método pix()?
+Por quê?
+"""
+
+# TODO: faça as mudanças na classe e chame extrato() aqui
+
+
+# ==============================================================================
+# PARA PENSAR (responda como comentário)
+# ==============================================================================
+"""
+Nada impede alguém de escrever direto:
+
+  conta_ana.saldo = conta_ana.saldo - 1000
+
+O que dá errado se o programa fizer isso em vez de chamar sacar()?
+Pense no saldo e no histórico.
+"""
+
+# TODO: escreva sua resposta aqui
 
 
 # ==============================================================================
