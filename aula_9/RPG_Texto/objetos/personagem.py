@@ -52,7 +52,8 @@ class PersonagemBase:
 
     def atualizar_buffs(self):
         # TODO: para cada buff em self.buffs, diminua turnos_restantes.
-        # Quando chegar a 0, desfaça o bônus (setattr) e remova o buff da lista.
+        # Quando chegar a 0, desfaça o bônus (if/elif pelo
+        # buff["atributo"], ex: self.ataque -= buff["valor"]) e remova o buff da lista.
         pass
 
     def status(self):
