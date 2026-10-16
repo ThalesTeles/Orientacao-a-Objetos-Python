@@ -16,7 +16,8 @@ diferentes (curar OU dar um buff) dependendo só do valor de self.tipo?
   de personagem.vida_maxima.
 - Senão: crie um dicionário de buff, ex:
   {"atributo": "ataque", "valor": self.valor, "turnos_restantes": self.duracao_turnos}
-  adicione em personagem.buffs e já aplique o bônus com setattr().
+  adicione em personagem.buffs e já aplique o bônus, usando if/elif para
+  saber qual atributo somar (ex: personagem.ataque += self.valor).
 """
 
 

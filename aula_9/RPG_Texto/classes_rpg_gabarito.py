@@ -63,8 +63,12 @@ class PersonagemBase:
         for buff in self.buffs:
             buff["turnos_restantes"] -= 1
             if buff["turnos_restantes"] <= 0:
-                atributo_atual = getattr(self, buff["atributo"])
-                setattr(self, buff["atributo"], atributo_atual - buff["valor"])
+                if buff["atributo"] == "ataque":
+                    self.ataque -= buff["valor"]
+                elif buff["atributo"] == "defesa":
+                    self.defesa -= buff["valor"]
+                elif buff["atributo"] == "critico":
+                    self.chance_critico -= buff["valor"]
                 print(f"O efeito de {buff['atributo']} de {self.nome} acabou.")
             else:
                 buffs_restantes.append(buff)
@@ -170,12 +174,15 @@ class Item:
             print(f"{personagem.nome} usou {self.nome} e recuperou {recuperado} de vida!")
             return
 
-        nomes_atributos = {"ataque": "ataque", "defesa": "defesa", "critico": "chance_critico"}
-        nome_atributo = nomes_atributos[self.tipo]
-        valor_atual = getattr(personagem, nome_atributo)
-        setattr(personagem, nome_atributo, valor_atual + self.valor)
+        if self.tipo == "ataque":
+            personagem.ataque += self.valor
+        elif self.tipo == "defesa":
+            personagem.defesa += self.valor
+        elif self.tipo == "critico":
+            personagem.chance_critico += self.valor
+
         personagem.buffs.append({
-            "atributo": nome_atributo,
+            "atributo": self.tipo,
             "valor": self.valor,
             "turnos_restantes": self.duracao_turnos,
         })
