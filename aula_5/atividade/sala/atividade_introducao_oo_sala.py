@@ -1,151 +1,162 @@
 """
 ==============================================================================
-AULA 5 - ATIVIDADE DE SALA - CLASSES, OBJETOS, ATRIBUTOS E CONSTRUTORES
+AULA 5 - ATIVIDADE DE SALA - CLASSES, OBJETOS E CONSTRUTOR
 ==============================================================================
 
-Complete os espaços marcados com o comentário # TODO.
-Depois de completar cada parte, execute o arquivo para conferir se os
-prints aparecem corretamente.
+Nesta atividade você vai montar a base de um aplicativo de músicas.
 
-Regra do dia: toda classe que você criar deve ter um construtor
-(__init__) que recebe os atributos como parâmetros e os atribui com
-"self.atributo = valor". Não use mais "class Nome: pass" + atribuição
-manual - isso foi só para entendermos o problema que o construtor
-resolve. Métodos (comportamentos, além do __init__) ainda são assunto
-da Aula 6!
+Complete os trechos marcados com # TODO e execute o arquivo depois de
+cada parte para ver se está funcionando.
+
+Toda classe que você criar deve ter um construtor (__init__) que recebe
+os atributos como parâmetros. Métodos além do __init__ ficam para a
+próxima aula.
 ==============================================================================
 """
 
 # ==============================================================================
-# PARTE 1 - CRIANDO UMA CLASSE COM CONSTRUTOR
+# PARTE 1 - A CLASSE MUSICA
 # ==============================================================================
 """
-Crie uma classe chamada "Animal" com um construtor (__init__) que recebe
-e define os seguintes atributos:
-  - nome
-  - especie
-  - idade
-  - som   (o som que o animal faz, ex: "Au au", "Miau")
+Crie a classe "Musica" com um construtor que recebe e guarda:
+  - titulo
+  - artista
+  - duracao   (em segundos, ex: 215)
 """
 
-# TODO: crie a classe Animal aqui, com __init__(self, nome, especie, idade, som)
+# TODO: crie a classe Musica aqui
 
 
 # ==============================================================================
-# PARTE 2 - CRIANDO OBJETOS COM O CONSTRUTOR
+# PARTE 2 - CRIANDO MÚSICAS
 # ==============================================================================
 """
-Agora crie DOIS objetos (instâncias) da classe Animal: "cachorro" e "gato",
-passando os valores direto no construtor (sem atribuir os atributos "na
-mão" depois).
+Crie três objetos Musica com músicas que você gosta. Use nomes de
+variáveis que façam sentido, como "musica1", "musica2" e "musica3".
 
-Use valores diferentes para cada animal.
+Depois, faça um print para cada música mostrando título e artista:
+
+  "Evidências, de Chitãozinho & Xororó"
 """
 
-# TODO: crie o objeto "cachorro" chamando o construtor, ex:
-# cachorro = Animal(___, ___, ___, ___)
+# TODO: crie os três objetos aqui
 
 
-# TODO: crie o objeto "gato" chamando o construtor da mesma forma
-
-
-# ==============================================================================
-# PARTE 3 - EXIBINDO AS INFORMAÇÕES
-# ==============================================================================
-"""
-Complete os prints abaixo para mostrar as informações de cada animal,
-no seguinte formato (você pode se inspirar neste modelo):
-
-  "Rex é um(a) cachorro de 3 anos e faz Au au"
-"""
-
-# TODO: complete o print do cachorro
-# print(f"...")
-
-# TODO: complete o print do gato
-# print(f"...")
+# TODO: faça os prints aqui
 
 
 # ==============================================================================
-# PARTE 4 - MAIS UM OBJETO
+# PARTE 3 - USANDO OS ATRIBUTOS EM CONTAS
 # ==============================================================================
 """
-Crie um terceiro objeto da classe Animal, com o animal que você quiser
-(pode ser um bicho de estimação real, um animal exótico, ou até um
-animal fictício/lendário). Passe os 4 valores (nome, especie, idade,
-som) direto no construtor e faça o print no mesmo formato da Parte 3.
+A duração está guardada em segundos, mas aplicativo nenhum mostra
+"279 segundos". Para cada música, calcule os minutos e os segundos a
+partir do atributo "duracao":
+
+  minutos = musica1.duracao // 60
+  segundos = musica1.duracao % 60
+
+E mostre no formato:
+
+  "Evidências, de Chitãozinho & Xororó (4:39)"
+
+Se aparecer algo como "3:5" em vez de "3:05", use {segundos:02d} dentro
+da f-string. Isso obriga o número a ter dois dígitos.
 """
 
-# TODO: crie o terceiro objeto aqui, chamando o construtor
-
-
-# TODO: print do terceiro objeto aqui
-
-
-# ==============================================================================
-# PARTE 5 - CRIE SUA PRÓPRIA CLASSE (COM CONSTRUTOR)
-# ==============================================================================
-"""
-Escolha um dos temas abaixo (ou sugira outro para o professor):
-
-  a) Carro         -> atributos: marca, modelo, cor, velocidade_max
-  b) Jogador       -> atributos: nome, time, posicao, numero_camisa
-  c) Celular       -> atributos: marca, modelo, armazenamento, bateria
-  d) Personagem de RPG -> atributos: nome, classe, vida, ataque
-
-Faça o seguinte:
-  1. Crie a classe escolhida, com um construtor (__init__) que recebe
-     os 4 atributos sugeridos (ou outros, se preferir) como parâmetros.
-  2. Crie DOIS objetos dessa classe, passando os valores direto no
-     construtor, com valores diferentes para cada objeto.
-  3. Faça um print para cada objeto, mostrando suas informações de forma
-     organizada.
-"""
-
-# TODO: crie sua classe aqui, já com __init__
-
-
-# TODO: crie os dois objetos aqui, chamando o construtor
-
-
-# TODO: faça os prints de cada objeto aqui
+# TODO: mostre as três músicas com a duração em minutos e segundos
 
 
 # ==============================================================================
-# DESAFIO EXTRA
+# PARTE 4 - CADA OBJETO TEM SEUS PRÓPRIOS DADOS
 # ==============================================================================
 """
-Crie uma classe "Sala" (com construtor) representando uma sala de uma
-casa (ex: cozinha, quarto, sala de estar). O construtor deve receber:
-  - nome_comodo
-  - metragem (tamanho em m²)
-  - itens (uma lista com pelo menos 3 itens que existem nesse cômodo)
+Você percebeu que digitou o nome do artista errado em uma das músicas.
+Corrija direto no objeto, sem criar a música de novo:
 
-Crie pelo menos 2 objetos "Sala" diferentes, passando os valores direto
-no construtor, e imprima, para cada um, o nome do cômodo, a metragem e a
-lista de itens.
+  musica2.artista = "Nome Certo"
+
+Depois imprima o artista das três músicas. Só uma deve ter mudado.
+
+Responda em um comentário: por que mudar musica2 não afetou musica1 e
+musica3, se as três foram criadas pela mesma classe?
 """
 
-# TODO (desafio extra): crie a classe Sala (com __init__) e os objetos aqui
+# TODO: corrija o artista de uma música e imprima o artista das três
+
+
+# TODO: escreva sua resposta aqui
 
 
 # ==============================================================================
-# PARA PENSAR (sem escrever código - responda como comentário)
+# PARTE 5 - QUANDO O CONSTRUTOR RECLAMA (E QUANDO NÃO RECLAMA)
 # ==============================================================================
 """
-Tente, de propósito, criar um objeto da Parte 5 esquecendo de passar UM
-dos argumentos na chamada do construtor (ex: Carro("Fiat", "Uno", "branco")
-sem a velocidade_max).
+a) Tente criar uma música esquecendo a duração:
 
-O que acontece? Copie a mensagem de erro aqui como comentário e explique,
-com suas palavras:
-  - Por que esse erro aconteceu?
-  - Em que esse erro é DIFERENTE do problema que vimos na aula quando
-    ainda não usávamos construtor (aquele AttributeError que só aparecia
-    quando a gente tentava USAR o atributo esquecido)?
+     teste = Musica("Bohemian Rhapsody", "Queen")
+
+   Rode, copie a mensagem de erro para um comentário e depois apague ou
+   comente essa linha para o resto do arquivo voltar a funcionar.
+
+b) Agora crie uma música trocando a ordem do título e do artista:
+
+     teste = Musica("Queen", "Bohemian Rhapsody", 354)
+
+   Imprima o título e o artista. O Python reclamou dessa vez? O que
+   aconteceu com os dados?
+
+c) Para evitar esse tipo de confusão, dá para passar os valores dizendo
+   o nome de cada parâmetro. Assim a ordem não importa:
+
+     teste = Musica(artista="Queen", duracao=354, titulo="Bohemian Rhapsody")
+
+   Crie uma quarta música desse jeito e imprima título e artista para
+   conferir.
 """
 
-# TODO: cole aqui o erro que você viu e sua explicação
+# TODO a): cole o erro aqui como comentário
+
+
+# TODO b): crie a música com a ordem trocada e imprima
+
+
+# TODO c): crie a quarta música com os nomes dos parâmetros e imprima
+
+
+# ==============================================================================
+# PARTE 6 - VÁRIOS OBJETOS EM UMA LISTA
+# ==============================================================================
+"""
+Coloque as suas músicas em uma lista chamada "playlist" e use um for
+para mostrar todas, no mesmo formato da Parte 3.
+
+Repare que dentro do for você escreve o print uma vez só e ele funciona
+para todas as músicas.
+"""
+
+# TODO: crie a lista playlist
+
+
+# TODO: percorra a playlist com um for e mostre cada música
+
+
+# ==============================================================================
+# PARTE 7 - SUA VEZ
+# ==============================================================================
+"""
+Escolha uma coisa do seu dia a dia para virar classe. Pode ser um jogo,
+um filme, uma série, um tênis, um prato de comida, o que quiser.
+
+  1. Crie a classe com um construtor de pelo menos 3 atributos.
+     Pelo menos um deles deve ser um número.
+  2. Crie dois objetos dessa classe.
+  3. Faça um print de cada objeto que use o atributo numérico em alguma
+     conta (ex: preço com desconto, nota de 0 a 100 virando nota de 0 a 10,
+     ano de lançamento virando "lançado há X anos").
+"""
+
+# TODO: crie sua classe, os objetos e os prints aqui
 
 
 # ==============================================================================

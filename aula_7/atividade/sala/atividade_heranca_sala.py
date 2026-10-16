@@ -1,152 +1,155 @@
 """
 ==============================================================================
-EXERCÍCIO DE SALA - HERANÇA, SOBRESCRITA E AGREGAÇÃO
+AULA 7 - ATIVIDADE DE SALA - HERANÇA, SOBRESCRITA E AGREGAÇÃO
 ==============================================================================
 
-Nesta atividade vamos RECONSTRUIR as classes de Animal que criamos na
-aula 5, agora aplicando os conceitos de herança que acabamos de ver.
+Nesta atividade você vai montar a venda de ingressos de um show. Existem
+tipos diferentes de ingresso (inteira, meia e VIP), e cada um calcula o
+preço de um jeito.
 
-Complete os espaços marcados com o comentário # TODO.
-Depois de completar cada parte, execute o arquivo para conferir se os
-prints aparecem corretamente.
+Complete os trechos marcados com # TODO e execute o arquivo depois de
+cada parte para ver se está funcionando.
 ==============================================================================
 """
 
 # ==============================================================================
-# PARTE 1 - CLASSE BASE COM CONSTRUTOR E MÉTODOS
+# PARTE 1 - A CLASSE BASE INGRESSO
 # ==============================================================================
 """
-Crie uma classe "Animal" com um construtor __init__ que recebe e guarda:
-  - nome
-  - especie
-  - idade
+Crie a classe "Ingresso" com:
+  - um construtor que recebe "setor" (ex: "Pista", "Arquibancada") e
+    "preco_base"
+  - um método "preco_final(self)" que devolve o preco_base
+  - um método "descrever(self)" que imprime:
 
-Adicione também dois métodos:
-  - apresentar(self): imprime algo como
-      "Rex é um(a) cachorro de 3 anos."
-  - fazer_som(self): imprime
-      "Este animal faz um som genérico."
-    (esse método vai ser SOBRESCRITO pelas subclasses depois)
+      "Ingresso Pista - R$ 120.00"
+
+    Para mostrar o preço, use self.preco_final(), e não self.preco_base.
+    Isso vai fazer diferença nas próximas partes.
+
+Crie um ingresso e chame descrever().
 """
 
-# TODO: crie a classe Animal aqui, com __init__, apresentar() e fazer_som()
-
-
-# ==============================================================================
-# PARTE 2 - SUBCLASSES COM HERANÇA
-# ==============================================================================
-"""
-Crie duas subclasses de Animal: "Cachorro" e "Gato".
-
-Cada uma deve SOBRESCREVER o método fazer_som():
-  - Cachorro.fazer_som() deve imprimir algo como "Rex faz: Au au!"
-  - Gato.fazer_som() deve imprimir algo como "Mimi faz: Miau!"
-
-Dica: as subclasses NÃO precisam reescrever o __init__ nem o
-apresentar() - eles já vêm herdados da classe Animal!
-"""
-
-# TODO: crie a classe Cachorro(Animal) aqui, sobrescrevendo fazer_som()
-
-
-# TODO: crie a classe Gato(Animal) aqui, sobrescrevendo fazer_som()
+# TODO: crie a classe Ingresso e teste aqui
 
 
 # ==============================================================================
-# PARTE 3 - CRIANDO OS OBJETOS
+# PARTE 2 - MEIA-ENTRADA: SOBRESCREVENDO UM MÉTODO
 # ==============================================================================
 """
-Crie um objeto Cachorro e um objeto Gato, com valores de nome, especie
-e idade à sua escolha. Em seguida, para cada um deles, chame:
-  - apresentar()
-  - fazer_som()
+Crie a classe "MeiaEntrada", que herda de Ingresso. Ela só precisa
+sobrescrever um método: preco_final(), que agora devolve metade do
+preco_base.
+
+Não escreva __init__ nem descrever() em MeiaEntrada.
+
+Crie uma meia-entrada para a Pista com preço base 120 e chame
+descrever(). Deve aparecer R$ 60.00.
+
+Responda em um comentário: o método descrever() não foi reescrito em
+MeiaEntrada. Como ele sabe que precisa mostrar o preço pela metade?
 """
 
-# TODO: crie o objeto cachorro aqui e chame apresentar() e fazer_som()
+# TODO: crie a classe MeiaEntrada e teste aqui
 
 
-# TODO: crie o objeto gato aqui e chame apresentar() e fazer_som()
-
-
-# ==============================================================================
-# PARTE 4 - MAIS UM TIPO DE ANIMAL
-# ==============================================================================
-"""
-Crie uma TERCEIRA subclasse de Animal, com o animal que você quiser
-(pode ser um bicho de estimação real, um animal exótico, ou até um
-animal fictício/lendário). Sobrescreva o método fazer_som() com um som
-apropriado para esse animal.
-
-Crie um objeto dessa nova classe e chame apresentar() e fazer_som().
-"""
-
-# TODO: crie a subclasse do seu animal aqui
-
-
-# TODO: crie o objeto e chame apresentar() e fazer_som() aqui
+# TODO: escreva sua resposta aqui
 
 
 # ==============================================================================
-# PARTE 5 - MESMA CHAMADA, SONS DIFERENTES
+# PARTE 3 - VIP: USANDO super()
 # ==============================================================================
 """
-Coloque os três objetos de animais que você criou (cachorro, gato e o
-terceiro animal) dentro de uma lista chamada "bichario".
+Crie a classe "IngressoVIP", que herda de Ingresso e tem um atributo a
+mais: "brinde" (ex: "camiseta do show").
 
-Depois, percorra a lista com um "for" chamando fazer_som() para cada
-animal - sem se preocupar em saber qual é a classe exata de cada um.
+  1. No __init__, receba setor, preco_base e brinde. Use
+     super().__init__(setor, preco_base) para guardar os dois primeiros
+     e depois guarde o brinde com self.brinde.
+  2. Sobrescreva preco_final(): o VIP custa o preço normal mais R$ 80.
+     Use super().preco_final() + 80 em vez de repetir a conta.
+  3. Sobrescreva descrever(): chame super().descrever() e depois imprima
+     uma linha a mais com o brinde.
+
+Crie um ingresso VIP e chame descrever().
 """
 
-# TODO: crie a lista "bichario" com os três animais
-
-
-# TODO: percorra "bichario" com um for e chame fazer_som() para cada um
-
-
-# ==============================================================================
-# PARTE 6 - AGREGAÇÃO: O ZOOLÓGICO "TEM" ANIMAIS
-# ==============================================================================
-"""
-Agora vamos praticar AGREGAÇÃO (a relação "tem um/tem vários").
-
-Crie uma classe "Zoologico" com:
-  - um construtor __init__ que recebe "nome" (nome do zoológico) e cria
-    uma lista vazia chamada "animais"
-  - um método "receber_animal(self, animal)" que adiciona um animal à
-    lista "animais" e imprime algo como
-      "Rex foi recebido no Zoológico Savana Feliz!"
-  - um método "fazer_todos_os_sons(self)" que percorre a lista de
-    animais e chama fazer_som() de cada um
-
-IMPORTANTE: a classe Zoologico NÃO deve herdar de Animal! Um zoológico
-não É UM animal, ele TEM VÁRIOS animais - isso é agregação, não herança.
-"""
-
-# TODO: crie a classe Zoologico aqui
-
-
-# TODO: crie um objeto Zoologico com o nome que você quiser
-
-
-# TODO: use receber_animal() para adicionar o cachorro, o gato e o
-# terceiro animal ao zoológico
-
-
-# TODO: chame fazer_todos_os_sons() no objeto Zoologico
+# TODO: crie a classe IngressoVIP e teste aqui
 
 
 # ==============================================================================
-# REFLEXÃO FINAL (responda em uma frase, como comentário abaixo)
+# PARTE 4 - MESMA CHAMADA, PREÇOS DIFERENTES
 # ==============================================================================
 """
-Qual foi a vantagem de usar herança em vez de escrever uma classe
-Cachorro e uma classe Gato totalmente separadas (do jeito que faríamos
-sem herança)? E por que o Zoologico usa agregação em vez de herança?
+Crie uma lista com pelo menos 5 ingressos misturados (inteira, meia e
+VIP). Use um for para:
+  - chamar descrever() de cada um
+  - somar o preco_final() de todos
+
+No final, imprima o total. O for não deve ter nenhum if para descobrir
+o tipo do ingresso.
 """
 
-# TODO: escreva sua resposta aqui como comentário
+# TODO: crie a lista, percorra com o for e imprima o total
 
 
 # ==============================================================================
-# FIM DO EXERCÍCIO
+# PARTE 5 - AGREGAÇÃO: O SHOW TEM INGRESSOS
+# ==============================================================================
+"""
+Um show não é um ingresso. Ele tem vários ingressos vendidos. Por isso,
+a classe "Show" não herda de Ingresso.
+
+Crie a classe "Show" com:
+  - um construtor que recebe "artista" e "capacidade" (quantas pessoas
+    cabem) e cria a lista vazia "ingressos_vendidos"
+  - um método "vender(self, ingresso)":
+      se ainda couber gente, adiciona o ingresso na lista e imprime
+      "Ingresso vendido para o show de [artista]"
+      se já estiver lotado, imprime "Show esgotado"
+  - um método "faturamento(self)" que devolve a soma do preco_final()
+    de todos os ingressos vendidos
+
+Crie um show com capacidade 4, tente vender os 5 ingressos da Parte 4
+e imprima o faturamento.
+"""
+
+# TODO: crie a classe Show e teste aqui
+
+
+# ==============================================================================
+# PARTE 6 - É UM OU TEM UM?
+# ==============================================================================
+"""
+Para cada par abaixo, responda em um comentário se a relação é de
+herança (é um) ou de agregação (tem um). Se não for nenhuma das duas,
+escreva "nenhuma".
+
+  a) IngressoVIP e Ingresso
+  b) Show e Palco
+  c) Moto e Veiculo
+  d) Playlist e Musica
+  e) Professor e Pessoa
+  f) Celular e Bateria
+  g) Turma e Aluno
+  h) Cachorro e Gato
+"""
+
+# TODO: escreva suas respostas aqui
+
+
+# ==============================================================================
+# DESAFIO EXTRA
+# ==============================================================================
+"""
+Crie a classe "Cortesia", que herda de Ingresso e tem preço final zero.
+Venda uma cortesia em um show novo junto com outros ingressos e
+confira se o faturamento continua certo, sem mudar nada na classe Show.
+"""
+
+# TODO (desafio extra): crie a classe Cortesia e teste aqui
+
+
+# ==============================================================================
+# FIM DA ATIVIDADE DE SALA
 # ==============================================================================
