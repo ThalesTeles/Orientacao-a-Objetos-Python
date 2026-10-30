@@ -1,14 +1,16 @@
 # Rascunhos e arquivos de teste
-aula_x.py
-aula_Y.py
-teste/
+.rascunhos/
 
-# Arquivos administrativos e ferramentas
-repomix-output.xml
-Ementa Cursos.xlsx - OO.csv
-What Object-Oriented Programming Was Supposed to Be.pdf
-pictures/
+# Arquivos administrativos e ferramentas (fora do versionamento)
+plano/
+materiais/
 *.pdf
+
+# Locais: Dolphin e link para o Pedagógico
+.directory
+.hidden
+guias-de-estudo
 
 # Python
 __pycache__/
+.venv/
