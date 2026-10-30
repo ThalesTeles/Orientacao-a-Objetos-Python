@@ -1,12 +1,13 @@
+% !TEX program = xelatex
 \documentclass[12pt,a4paper]{article}
 
-\input{/home/thales/documents/profia/meus_materiais/configuracao_latek/config_profia_1.tex}
+\usepackage{profia} % código no tema escuro (Min Dark), cores do VS Code
 
 \begin{document}
 
 \cabecalhoRoteiro
-    {/home/thales/documents/profia/imagens/Logo Profia.png} % Logo 1
-    {/home/thales/documents/profia/imagens/Logo Horizontal Sem Fundo.png} % Logo 2
+    {/home/thales/documents/profia/recursos/imagens/logo-profia.png} % Logo 1
+    {/home/thales/documents/profia/recursos/imagens/logo-horizontal-sem-fundo.png} % Logo 2
     {Profia - Escola de Programação e Tecnologia}
     {Orientação a Objetos}
     {Introdução ao desenvolvimento Web}
@@ -48,9 +49,9 @@ Dentro do \verb|<body>|, crie o topo do site com o título principal e uma área
             <h1>Site de Receitas</h1>
             <nav>
                 <ul>
-                    <li><a href="\">INÍCIO</a></li>
-                    <li><a href="\">DOCES</a></li>
-                    <li><a href="\">SALGADOS</a></li>
+                    <li><a href="">INÍCIO</a></li>
+                    <li><a href="">DOCES</a></li>
+                    <li><a href="">SALGADOS</a></li>
                 </ul>
             </nav>
         </header>
@@ -70,7 +71,7 @@ Abaixo do cabeçalho, abra o contêiner principal (\verb|<main>|) e o artigo da 
                         <figcaption>A sobremesa mais amada do brasil</figcaption>
                     </figure>
 
-                <!- Restante do código aqui... -->
+                <!-- Restante do código aqui... -->
                 </section>
             </article>
         </main>
