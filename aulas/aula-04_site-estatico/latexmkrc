@@ -1,0 +1,2 @@
+# Compila com XeLaTeX (fonte JetBrains Mono no código, como no VS Code)
+$pdf_mode = 5;
