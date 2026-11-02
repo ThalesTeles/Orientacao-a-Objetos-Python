@@ -1,6 +1,6 @@
 """
 ==============================================================================
-HERANÇA E OUTRAS RELAÇÕES ENTRE OBJETOS
+AULA 7 - HERANÇA E OUTRAS RELAÇÕES ENTRE OBJETOS
 ==============================================================================
 
 Este arquivo é um material de apoio. Você pode executá-lo no Python para

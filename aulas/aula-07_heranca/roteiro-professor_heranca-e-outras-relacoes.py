@@ -1,6 +1,6 @@
 """
 ==============================================================================
-ROTEIRO DE AULA - HERANÇA E OUTRAS RELAÇÕES ENTRE OBJETOS
+ROTEIRO DE AULA 7 - HERANÇA E OUTRAS RELAÇÕES ENTRE OBJETOS
 Público-alvo: alunos de 15 a 19 anos
 Duração sugerida: 1h30 a 2h
 ==============================================================================

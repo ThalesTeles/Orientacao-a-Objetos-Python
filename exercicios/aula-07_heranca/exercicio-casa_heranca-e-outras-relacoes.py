@@ -1,6 +1,6 @@
 """
 ==============================================================================
-EXERCÍCIO PARA CASA - EVOLUINDO O SISTEMA DE ESTOQUE COM HERANÇA
+AULA 7 - ATIVIDADE DE CASA - EVOLUINDO O SISTEMA DE ESTOQUE COM HERANÇA
 ==============================================================================
 
 Na aula 5, criamos uma classe "Produto" para representar o estoque de uma
