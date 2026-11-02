@@ -21,8 +21,9 @@ Por que usar random.choices() com weights em vez de random.choice() simples?
   pronta em combate.py, você só precisa importá-la e chamá-la.
 """
 
-from gabarito.objetos.monstro import gerar_monstro
-from gabarito.objetos.item import gerar_item_aleatorio
+import random
+from objetos.monstro import gerar_monstro
+from objetos.item import gerar_item_aleatorio
 
 
 class Sala:

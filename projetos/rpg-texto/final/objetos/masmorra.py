@@ -18,7 +18,7 @@ Por que faz mais sentido aqui?
   (not personagem.esta_vivo()), pare o loop e avise a derrota; se sobreviver
   a todas, avise a vitória.
 """
-from sala import Sala
+from objetos.sala import Sala
 
 
 class Masmorra:

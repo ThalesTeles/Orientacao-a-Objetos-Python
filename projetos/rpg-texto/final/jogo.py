@@ -1,7 +1,7 @@
 # jogo.py
 
-from gabarito.objetos.personagem import Guerreiro, Mago, Arqueiro
-from gabarito.objetos.masmorra import Masmorra
+from objetos.personagem import Guerreiro, Mago, Arqueiro
+from objetos.masmorra import Masmorra
 
 def escolher_classe():
     print("=== RPG de Texto — Escolha sua Classe ===")

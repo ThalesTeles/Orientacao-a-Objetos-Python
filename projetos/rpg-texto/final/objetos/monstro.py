@@ -19,7 +19,7 @@ implementação de atacar() do zero?
 - gerar_monstro(dificuldade) é uma função solta (fora da classe) que cria e
   devolve um Monstro com atributos que crescem com a dificuldade.
 """
-from personagem import PersonagemBase
+from objetos.personagem import PersonagemBase
 
 
 class Monstro(PersonagemBase):
