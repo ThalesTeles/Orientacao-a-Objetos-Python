@@ -1,16 +1,26 @@
-# Rascunhos e arquivos de teste
-.rascunhos/
-
-# Arquivos administrativos e ferramentas (fora do versionamento)
-plano/
-materiais/
+# Este repositório guarda só código: nada de PDF, LaTeX, ZIP ou bancos gerados
 *.pdf
+*.tex
+*.zip
+*.aux
+*.log
+*.fls
+*.fdb_latexmk
+*.xdv
+*.toc
+*.cod
+*.listing
+*.out
+*.synctex.gz
+latexmkrc
+*.db
 
-# Locais: Dolphin e link para o Pedagógico
+# Locais
 .directory
 .hidden
-guias-de-estudo
+.nosync
 
 # Python
 __pycache__/
 .venv/
+venv/
