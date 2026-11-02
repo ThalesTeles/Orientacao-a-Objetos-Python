@@ -20,9 +20,9 @@ Por que usar random.choices() com weights em vez de random.choice() simples?
   chame iniciar_combate(personagem, self.monstro), essa função já está
   pronta em combate.py, você só precisa importá-la e chamá-la.
 """
-import random
-from monstro import gerar_monstro
-from item import gerar_item_aleatorio
+
+from gabarito.objetos.monstro import gerar_monstro
+from gabarito.objetos.item import gerar_item_aleatorio
 
 
 class Sala:

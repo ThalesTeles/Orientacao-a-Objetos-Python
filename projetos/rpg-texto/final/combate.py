@@ -2,7 +2,7 @@
 
 import random
 from dados import chance_fuga
-from objetos.item import gerar_item_aleatorio
+from gabarito.objetos.item import gerar_item_aleatorio
 
 
 def iniciar_combate(personagem, monstro):
