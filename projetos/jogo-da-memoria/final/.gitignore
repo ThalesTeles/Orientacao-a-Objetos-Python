@@ -1,0 +1,4 @@
+memoria.db
+static/imagens/
+.venv/
+__pycache__/

@@ -1,0 +1,261 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: system-ui, sans-serif;
+    background-color: #1f2233;
+    color: #e8e8f0;
+    padding: 24px;
+}
+
+a {
+    color: #9fc5ff;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 900px;
+    margin: 0 auto 24px;
+}
+
+.logo {
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: #ffd166;
+    text-decoration: none;
+}
+
+nav a {
+    margin-left: 16px;
+}
+
+main {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+h2 {
+    font-size: 1.1rem;
+    margin-bottom: 12px;
+    color: #ffd166;
+}
+
+/* ---------- painéis e formulários ---------- */
+.painel {
+    background-color: #2a2e45;
+    border-radius: 10px;
+    padding: 18px;
+    margin-bottom: 20px;
+}
+
+.colunas {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.formulario {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: flex-end;
+}
+
+.formulario label {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-size: 0.9rem;
+}
+
+.formulario .largo {
+    flex: 1;
+}
+
+input, select {
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid #555a7a;
+    background-color: #1f2233;
+    color: inherit;
+    font-size: 1rem;
+}
+
+button, .botao {
+    padding: 8px 14px;
+    border: none;
+    border-radius: 6px;
+    background-color: #444a6b;
+    color: inherit;
+    font-size: 1rem;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.principal {
+    background-color: #3a86ff;
+}
+
+.perigo {
+    background-color: #b5384a;
+}
+
+.linha {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid #3a3f5c;
+}
+
+.simbolos {
+    font-size: 1.2rem;
+    margin-top: 4px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    text-align: left;
+    padding: 6px 4px;
+    border-bottom: 1px solid #3a3f5c;
+}
+
+.dica {
+    color: #9a9fbf;
+    font-size: 0.9rem;
+    margin-top: 8px;
+}
+
+.erro {
+    color: #ff8fa0;
+    margin-bottom: 10px;
+}
+
+/* ---------- partida ---------- */
+.placar {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 16px;
+}
+
+.vitoria {
+    background-color: #2d6a4f;
+    padding: 12px;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 1.2rem;
+    margin-bottom: 16px;
+}
+
+.mesa {
+    display: grid;
+    grid-template-columns: repeat(var(--colunas), 1fr);
+    gap: 12px;
+    max-width: calc(var(--colunas) * 110px);
+    margin: 0 auto 20px;
+}
+
+.carta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    font-size: 2.2rem;
+    background-color: #3a86ff;
+    border-radius: 10px;
+    overflow-wrap: anywhere;
+}
+
+.carta:hover:not(:disabled) {
+    background-color: #5c9bff;
+}
+
+.carta.virada {
+    background-color: #f1f1f6;
+    color: #1f2233;
+}
+
+.carta.encontrada {
+    background-color: #2d6a4f;
+    cursor: default;
+}
+
+.acoes {
+    display: flex;
+    justify-content: space-between;
+}
+
+.carta img {
+    width: 85%;
+    height: 85%;
+    object-fit: contain;
+}
+
+.vez {
+    text-align: center;
+    font-size: 1.2rem;
+    margin-bottom: 16px;
+}
+
+.modos {
+    display: flex;
+    gap: 16px;
+    border: none;
+    width: 100%;
+}
+
+.modos label {
+    flex-direction: row;
+    align-items: center;
+    gap: 6px;
+    font-size: 1rem;
+}
+
+.aviso {
+    background-color: #3d3a24;
+    border-left: 4px solid #ffd166;
+    padding: 10px;
+    margin-top: 12px;
+    font-size: 0.9rem;
+}
+
+/* ---------- figuras do tema ---------- */
+.figuras {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.figura {
+    position: relative;
+}
+
+.figura .carta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.figura button {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    padding: 2px 8px;
+}
+
+.renomear {
+    margin-bottom: 12px;
+}

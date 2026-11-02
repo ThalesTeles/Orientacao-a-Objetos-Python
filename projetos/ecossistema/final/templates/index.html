@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador de Ecossistema</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='estilo.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Simulador de Ecossistema</h1>
+        <p class="ciclo">Ciclo {{ eco.ciclo }}</p>
+    </header>
+
+    <main>
+        <section class="grade" style="--colunas: {{ largura }}">
+            {% for linha in eco.linhas() %}
+                {% for ser in linha %}
+                    {% if ser is not none %}
+                        <form method="post" action="{{ url_for('remover') }}" class="casa">
+                            <input type="hidden" name="especie" value="{{ ser.NOME }}">
+                            <input type="hidden" name="id" value="{{ ser.id }}">
+                            <button type="submit" title="{{ ser.descricao() }} (clique para remover)">{{ ser.EMOJI }}</button>
+                        </form>
+                    {% else %}
+                        <div class="casa vazia"></div>
+                    {% endif %}
+                {% endfor %}
+            {% endfor %}
+        </section>
+
+        <aside>
+            <h2>População</h2>
+            <ul class="contadores">
+                {% for especie, quantidade in eco.contagem().items() %}
+                    <li class="{{ especie.NOME }}">
+                        <span>{{ especie.EMOJI }} {{ especie.NOME }}</span>
+                        <strong>{{ quantidade }}</strong>
+                    </li>
+                {% endfor %}
+            </ul>
+
+            <h2>Simulação</h2>
+            <div class="botoes">
+                <form method="post" action="{{ url_for('avancar') }}">
+                    <input type="hidden" name="ciclos" value="1">
+                    <button type="submit" class="principal">Avançar 1 ciclo</button>
+                </form>
+                <form method="post" action="{{ url_for('avancar') }}">
+                    <input type="hidden" name="ciclos" value="10">
+                    <button type="submit">Avançar 10 ciclos</button>
+                </form>
+            </div>
+
+            <h2>Adicionar</h2>
+            <div class="botoes">
+                {% for especie in especies %}
+                    <form method="post" action="{{ url_for('adicionar') }}">
+                        <input type="hidden" name="especie" value="{{ especie.NOME }}">
+                        <button type="submit">{{ especie.EMOJI }} {{ especie.NOME|capitalize }}</button>
+                    </form>
+                {% endfor %}
+            </div>
+
+            <form method="post" action="{{ url_for('reiniciar') }}">
+                <button type="submit" class="perigo">Reiniciar</button>
+            </form>
+
+            <p class="dica">Clique num ser da grade para removê-lo.</p>
+        </aside>
+    </main>
+</body>
+</html>

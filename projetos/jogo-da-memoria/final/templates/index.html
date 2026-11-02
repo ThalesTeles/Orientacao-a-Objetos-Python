@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+{% block conteudo %}
+<section class="painel">
+    <h2>Nova partida</h2>
+    {% if erro %}<p class="erro">{{ erro }}</p>{% endif %}
+    <form method="post" action="{{ url_for('nova') }}" class="formulario">
+        <fieldset class="modos">
+            {% for chave, modo in modos.items() %}
+                <label><input type="radio" name="modo" value="{{ chave }}" {% if loop.first %}checked{% endif %}> {{ modo.NOME }}</label>
+            {% endfor %}
+        </fieldset>
+        <label>Jogador 1
+            <input type="text" name="jogador1" maxlength="30" required>
+        </label>
+        <label>Jogador 2 <small>(só no modo de dois)</small>
+            <input type="text" name="jogador2" maxlength="30">
+        </label>
+        <label>Tema
+            <select name="tema">
+                {% for tema in temas %}
+                    <option value="{{ tema.id }}">{{ tema.nome }}</option>
+                {% endfor %}
+            </select>
+        </label>
+        <label>Pares
+            <select name="pares">
+                {% for pares in pares_possiveis %}
+                    <option value="{{ pares }}" {% if pares == 6 %}selected{% endif %}>{{ pares }}</option>
+                {% endfor %}
+            </select>
+        </label>
+        <button type="submit" class="principal">Começar</button>
+    </form>
+</section>
+
+<section class="painel">
+<h2>Em andamento</h2>
+    {% for partida in em_andamento %}
+        <p class="linha">
+            <a href="{{ url_for('partida', id=partida.id) }}">
+                {{ partida.jogador1 }}{% if partida.jogador2 %} × {{ partida.jogador2 }}{% endif %}: {{ partida.tema.nome }}
+            </a>
+            <span>{{ partida.encontrados() }}/{{ partida.pares() }} pares</span>
+        </p>
+    {% else %}
+        <p class="dica">Nenhuma partida aberta.</p>
+    {% endfor %}
+</section>
+
+<div class="colunas">
+    <section class="painel">
+        <h2>Ranking (um jogador)</h2>
+        <table>
+            <tr><th>Jogador</th><th>Tema</th><th>Pares</th><th>Jogadas</th></tr>
+            {% for partida in ranking %}
+                <tr>
+                    <td>{{ partida.jogador1 }}</td>
+                    <td>{{ partida.tema.nome }}</td>
+                    <td>{{ partida.pares() }}</td>
+                    <td>{{ partida.jogadas }}</td>
+                </tr>
+            {% else %}
+                <tr><td colspan="4" class="dica">Ninguém terminou ainda.</td></tr>
+            {% endfor %}
+        </table>
+    </section>
+
+    <section class="painel">
+        <h2>Ranking (dois jogadores)</h2>
+        <table>
+            <tr><th>Vencedor</th><th>Perdedor</th><th>Placar</th><th>Tema</th></tr>
+            {% for partida in duplas %}
+                {% set regras = partida.regras %}
+                <tr>
+                    {% if regras.vencedor() %}
+                        <td>{{ regras.vencedor() }}</td>
+                        <td>{{ regras.perdedor() }}</td>
+                    {% else %}
+                        <td colspan="2">Empate: {{ partida.jogador1 }} × {{ partida.jogador2 }}</td>
+                    {% endif %}
+                    <td>{{ [partida.pontos1, partida.pontos2]|max }} × {{ [partida.pontos1, partida.pontos2]|min }}</td>
+                    <td>{{ partida.tema.nome }}</td>
+                </tr>
+            {% else %}
+                <tr><td colspan="4" class="dica">Nenhuma partida de dois terminada.</td></tr>
+            {% endfor %}
+        </table>
+    </section>
+</div>
+{% endblock %}

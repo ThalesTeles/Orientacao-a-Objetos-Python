@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block titulo %}{{ tema.nome }}: Jogo da Memória{% endblock %}
+{% block conteudo %}
+<section class="painel">
+    <form method="post" action="{{ url_for('renomear_tema', id=tema.id) }}" class="formulario renomear">
+        <label class="largo">Nome do tema
+            <input type="text" name="nome" value="{{ tema.nome }}" maxlength="30" required>
+        </label>
+        <button type="submit">Renomear</button>
+    </form>
+    {% if erro %}<p class="erro">{{ erro }}</p>{% endif %}
+
+    {% if tema.eh_imagem() %}
+        <form method="post" action="{{ url_for('enviar_imagens', id=tema.id) }}"
+              enctype="multipart/form-data" class="formulario">
+            <label class="largo">Imagens (cada imagem é um par)
+                <input type="file" name="imagens" accept="image/*" multiple required>
+            </label>
+            <button type="submit" class="principal">Enviar</button>
+        </form>
+        <p class="aviso">
+            Tamanho recomendado: <strong>{{ tamanho }} × {{ tamanho }} px</strong>, quadrada, PNG com fundo transparente.
+            Imagens de outro tamanho são ampliadas ou reduzidas até caber, sem distorcer; a sobra fica transparente.
+        </p>
+    {% else %}
+        <form method="post" action="{{ url_for('adicionar_textos', id=tema.id) }}" class="formulario">
+            <label class="largo">Textos ou emojis, separados por espaço (cada um é um par)
+                <input type="text" name="textos" placeholder="⚽ 🏀 🎾 🏐" required>
+            </label>
+            <button type="submit" class="principal">Adicionar</button>
+        </form>
+    {% endif %}
+    <p class="dica">{{ tema.figuras.count() }} figuras. Mínimo para jogar: {{ minimo }}.</p>
+</section>
+
+<section class="figuras">
+    {% for figura in tema.figuras %}
+        <form method="post" action="{{ url_for('remover_figura', id=figura.id) }}" class="figura">
+            <div class="carta virada">{% include "_face.html" %}</div>
+            <button type="submit" class="perigo" title="Remover">×</button>
+        </form>
+    {% endfor %}
+</section>
+
+<div class="acoes">
+    <a href="{{ url_for('temas') }}" class="botao">Voltar</a>
+    <form method="post" action="{{ url_for('remover_tema', id=tema.id) }}">
+        <button type="submit" class="perigo">Apagar tema</button>
+    </form>
+</div>
+{% endblock %}

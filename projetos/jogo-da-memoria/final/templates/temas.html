@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block titulo %}Temas: Jogo da Memória{% endblock %}
+{% block conteudo %}
+<section class="painel">
+    <h2>Criar tema</h2>
+    {% if erro %}<p class="erro">{{ erro }}</p>{% endif %}
+    <form method="post" action="{{ url_for('criar_tema') }}" class="formulario">
+        <label>Nome
+            <input type="text" name="nome" maxlength="30" required>
+        </label>
+        <label>Cartas de
+            <select name="tipo">
+                <option value="imagem" selected>Imagens</option>
+                <option value="texto">Texto ou emoji</option>
+            </select>
+        </label>
+        <button type="submit" class="principal">Criar</button>
+    </form>
+</section>
+
+<section class="painel">
+    <h2>Temas cadastrados</h2>
+    {% for tema in temas %}
+        <div class="linha">
+            <a href="{{ url_for('tema', id=tema.id) }}">{{ tema.nome }}</a>
+            <span>
+                {{ tema.figuras.count() }} {{ "imagens" if tema.eh_imagem() else "textos" }}
+                {% if not tema.pares_possiveis() %}<small class="erro">(faltam figuras)</small>{% endif %}
+            </span>
+        </div>
+    {% endfor %}
+</section>
+{% endblock %}

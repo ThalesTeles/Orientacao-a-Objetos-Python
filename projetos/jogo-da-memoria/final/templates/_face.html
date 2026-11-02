@@ -1,0 +1,6 @@
+{# a face de uma figura: imagem ou texto #}
+{% if figura.eh_imagem() %}
+    <img src="{{ url_for('static', filename='imagens/' + figura.valor) }}" alt="">
+{% else %}
+    {{ figura.valor }}
+{% endif %}

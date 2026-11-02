@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block titulo %}{{ partida.tema.nome }}: Jogo da Memória{% endblock %}
+{% block conteudo %}
+{% set regras = partida.regras %}
+<div class="placar">
+    <span>{{ partida.tema.nome }} · Pares {{ partida.encontrados() }}/{{ partida.pares() }}</span>
+    {% for item in regras.placar() %}<span>{{ item }}</span>{% endfor %}
+</div>
+
+{% if partida.terminada %}
+    <p class="vitoria">{{ regras.resultado() }}</p>
+{% elif regras.vez_de() %}
+    <p class="vez">Vez de <strong>{{ regras.vez_de() }}</strong></p>
+{% endif %}
+
+<section class="mesa" style="--colunas: {{ colunas }}">
+    {% for carta in partida.cartas_em_ordem() %}
+        <form method="post" action="{{ url_for('virar', id=partida.id, carta_id=carta.id) }}">
+            <button type="submit"
+                    class="carta {% if carta.encontrada %}encontrada{% elif carta.virada %}virada{% endif %}"
+                    {% if carta.encontrada or partida.terminada %}disabled{% endif %}>
+                {% if carta.visivel %}
+                    {% with figura = carta.figura %}{% include "_face.html" %}{% endwith %}
+                {% else %}?{% endif %}
+            </button>
+        </form>
+    {% endfor %}
+</section>
+
+<div class="acoes">
+    <a href="{{ url_for('index') }}" class="botao">Voltar</a>
+    <form method="post" action="{{ url_for('remover_partida', id=partida.id) }}">
+        <button type="submit" class="perigo">Apagar partida</button>
+    </form>
+</div>
+{% endblock %}
